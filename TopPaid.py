@@ -1,0 +1,2 @@
+def paidMain():
+    print('paid')
