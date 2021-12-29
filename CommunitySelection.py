@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import Label, messagebox
 import requests
 import csv
+import CommunitySelection
 #this is the url for webpack which we should change with the thing the user wants
 #https://rest.opencollective.com/v2/webpack/transactions.txt?kind=CONTRIBUTION%2CEXPENSE%2CHOST_FEE%2CPAYMENT_PROCESSOR_COVER&includeGiftCardTransactions=1&includeIncognitoTransactions=1&includeChildrenTransactions=1
 
@@ -31,6 +32,7 @@ def getFile ():
     file = open('Data.csv').readlines()
     if(str(file[0])[:10]!='"datetime"'):
         errorLabel()
+    else:
     
 findDataButton = tk.Button(text='GET DATA', command=getFile, bg='#79869c', relief='raised')
 canvas1.create_window(200, 180, window=findDataButton)
