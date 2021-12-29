@@ -7,9 +7,9 @@ import csv
 
 
 root= tk.Tk()
-root.geometry('500x300')
 root.resizable(False,False)
 root.title('Open Collective Visualization')
+root.iconphoto(False, tk.PhotoImage(file='images/icon.png'))
 
 canvas1 = tk.Canvas(root, width = 400, height = 300)
 canvas1.pack()
@@ -32,7 +32,7 @@ def getFile ():
     if(str(file[0])[:10]!='"datetime"'):
         errorLabel()
     
-findDataButton = tk.Button(text='Find', command=getFile)
+findDataButton = tk.Button(text='GET DATA', command=getFile, bg='#79869c', relief='raised')
 canvas1.create_window(200, 180, window=findDataButton)
 
 root.mainloop()
