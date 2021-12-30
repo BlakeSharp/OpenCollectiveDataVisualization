@@ -3,12 +3,13 @@ from tkinter import Label, messagebox, Button
 from tkinter.constants import E
 import requests
 import csv
-from balanceTracker import balanceMain
+#from balanceTracker import balanceMain
 import pandas as pd
-from TopDonators import donatorMain
-from TopPaid import paidMain
+import os
+#from TopDonators import donatorMain
+#from TopPaid import paidMain
 #this is the url for webpack which we should change with the thing the user wants
-#https://rest.opencollective.com/v2/webpack/transactions.txt?kind=CONTRIBUTION%2CEXPENSE%2CHOST_FEE%2CPAYMENT_PROCESSOR_COVER&includeGiftCardTransactions=1&includeIncognitoTransactions=1&includeChildrenTransactions=1
+#https://opencollective.com/webpack/transactions?kind=CONTRIBUTION%2CEXPENSE
 
 
 root= tk.Tk()
@@ -18,19 +19,6 @@ root.iconphoto(False, tk.PhotoImage(file='images/icon.png'))
 
 canvas1 = tk.Canvas(root, width = 400, height = 300)
 canvas1.pack()
-
-def getFile ():  
-    Name = NameEntry.get()
-    Name = Name.strip().lower()
-    url = 'https://rest.opencollective.com/v2/{}/transactions.txt?kind=CONTRIBUTION%2CEXPENSE%2CHOST_FEE%2CPAYMENT_PROCESSOR_COVER&includeGiftCardTransactions=1&includeIncognitoTransactions=1&includeChildrenTransactions=1'.format(Name)
-    r = requests.get(url, allow_redirects=True)
-    open('Data.csv', 'wb').write(r.content)
-    r.close() 
-    file = open('Data.csv').readlines()
-    if(str(file[0])[:10]!='"datetime"'):
-        errorLabel()
-    else:
-        graphSelectionScreen()
 
 findDataButton = Button(text='GET DATA', command=getFile, bg='#79869c', relief='raised')
 NameEntry = tk.Entry (root) 
