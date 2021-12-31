@@ -1,7 +1,5 @@
 import tkinter as tk
 from tkinter import Label, messagebox, Button
-from tkinter.constants import E
-import csv
 #from balanceTracker import balanceMain
 import pandas as pd
 import os
@@ -16,9 +14,9 @@ def toolButtons():
     checkFileButton.destroy()
     balanceGraphButton = Button(text='Balance Over Time', command=balanceMain, relief='raised')
     balanceGraphButton.pack()
-    topPaidButton = Button(text='Most expense', command=paidMain, relief='raised')
+    topPaidButton = Button(text='Most expense', command=poiMain, relief='raised')
     topPaidButton.pack()
-    topDonatorButton = Button(text='Top Donators', command=donatorMain, relief='raised')
+    topDonatorButton = Button(text='Top Donators', command=poiMain, relief='raised')
     topDonatorButton.pack()
     emptyButton = Button(text='Balance', command=balanceMain, relief='raised')
     emptyButton.pack()
