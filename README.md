@@ -1,8 +1,8 @@
 # Open Collective Data Visualization
-This is a data visualization tool designed for the Open Collective site that strived to make community funding more transparent. With this tool, it makes the contributions as well as spending associated with these communities easier to access.
+This is a data visualization tool designed for the Open Collective site that strives to make community funding more transparent. With this tool, the contributions ane expenses assosiated with these communities are easier to access.
 
 ## HOW TO USE
-- install dependencies in terminal:
+- Install dependencies in terminal:
   - `pip install pandas`
   - `pip install plotly`
 - Download CSV 'V1' file from your desired community's Open collective transactions page
