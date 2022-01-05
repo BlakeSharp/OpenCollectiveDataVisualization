@@ -5,6 +5,7 @@ import pandas as pd
 import os
 from balanceTracker import *
 from peopleOfInterest import *
+from ContributionPerDay import *
 #from TopDonators import donatorMain
 #from TopPaid import paidMain
 #this is the url for webpack which we should change with the thing the user wants
