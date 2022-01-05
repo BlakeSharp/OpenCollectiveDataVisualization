@@ -26,7 +26,6 @@ def getAllExpenses(name):
     for elem in range(len(data['User Profile'])):
         if data['User Profile'][elem] != name:
             continue
-        print 'getting'
         displayname = data['User Name'][elem]
         if data['Net Amount (USD)'][elem] < 0:
             expense = +round(data['Net Amount (USD)'][elem], 2)
