@@ -21,7 +21,6 @@ def toolButtons():
     topDonatorButton.pack()
     emptyButton = Button(text='Contributions Over Time', command=contributionMain, relief='raised')
     emptyButton.pack()
-    data = pd.read_csv('Data.csv')
     root.iconphoto(False, tk.PhotoImage(file='images/icon.png'))
     root.title('({}) graph selection'.format(data['accountSlug'][0]))
 
