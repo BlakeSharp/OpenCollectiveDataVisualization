@@ -6,6 +6,7 @@ import os
 from balanceTracker import *
 from peopleOfInterest import *
 from ContributionPerDay import *
+from expensePerDay import *
 #from TopDonators import donatorMain
 #from TopPaid import paidMain
 #this is the url for webpack which we should change with the thing the user wants
@@ -19,8 +20,10 @@ def toolButtons():
     topPaidButton.pack()
     topDonatorButton = Button(text='Top Donators', command=poiMain, relief='raised')
     topDonatorButton.pack()
-    emptyButton = Button(text='Contributions Over Time', command=contributionMain, relief='raised')
-    emptyButton.pack()
+    contributionsButton = Button(text='Contributions Over Time', command=contributionMain, relief='raised')
+    contributionsButton.pack()
+    expensesButton = Button(text='Contributions Over Time', command=expensesMain, relief='raised')
+    expensesButton.pack()
     root.iconphoto(False, tk.PhotoImage(file='images/icon.png'))
     root.title('({}) graph selection'.format(data['accountSlug'][0]))
 

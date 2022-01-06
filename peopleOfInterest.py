@@ -3,41 +3,35 @@
 from functools import total_ordering
 import plotly.express as px
 import pandas as pd
-import csv
-data = pd.read_csv('Community/Data.csv')
 
+
+data = pd.read_csv('Community/Data.csv')
+data['Net Amount (USD)'] = round(data['Net Amount (USD)'].astype(float),2)
+data['UserName'] = pd.NaT
+length = len(data['User Name'])
+for elem in range(0, length):
+    (data['UserName'][elem]) = data['User Name'][elem]
+data.to_csv('Community/Data.csv', index=False)
+
+newdata = pd.read_csv('Community/Data.csv')
+for elem in newdata.head():
+    print(elem)
+
+contributions = newdata.loc[newdata['Net Amount (USD)'] > 0]
+expenses = newdata.loc[newdata['Net Amount (USD)'] < 0]
 
 def poiMain():
-    (data['totalExpense'], data['totalContribution']) = ('', '')
-    data['Net Amount (USD)'] = round(data['Net Amount (USD)'
-            ].astype(float), 2)
-    dataCreation()
+    totalContributions = contributions.groupby('User Profile').sum()
+    totalExpenses = expenses.groupby('User Profile').sum()
+    for elem in totalExpenses.head():
+        print(elem)
+    conLength = len(totalContributions['UserName'])
+    for elem in totalContributions.head():
+        print(elem)
+    for elem in range(0,conLength):
+        print(totalContributions['Net Amount (USD)'])
 
 
-def dataCreation():
-    for elem in range(0, len(data['User Profile'])):
-        if data['totalExpense'][elem] == '':
-            getAllExpenses('User Profile')
-
-
-def getAllExpenses(name):
-    expense = 0
-    contribution = 0
-    for elem in range(len(data['User Profile'])):
-        if data['User Profile'][elem] != name:
-            continue
-        displayname = data['User Name'][elem]
-        if data['Net Amount (USD)'][elem] < 0:
-            expense = +round(data['Net Amount (USD)'][elem], 2)
-        else:
-            contribution = +round(data['Net Amount (USD)'][elem], 2)
-
-
-def createGraph():
-    poiData = pd.read_csv('Community/toolData/poiData.csv')
-    fig = px.bar(poiData, x=poiData['Name'], y=(poiData['totalExpense'
-                 ], poiData['totalContribution']))
-    fig.show()
 
 
 def main():
