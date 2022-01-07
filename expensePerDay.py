@@ -20,7 +20,7 @@ def expensesMain():
     createGraph()
 
 def createGraph():
-    fig = px.line(edit, x=edit['Order Date'], y =edit['Net Amount (USD)'], hover_data=[edit['User Name']])
+    fig = px.line(edit, x=edit['Order Date'], y =edit['Net Amount (USD)'], hover_data=[edit['User Name']], title="Net expenses per day (USD) over time")
     fig.show()
 
 
