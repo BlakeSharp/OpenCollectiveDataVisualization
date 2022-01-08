@@ -17,7 +17,7 @@ def contributionMain():
     createGraph()
 
 def createGraph():
-    fig = px.line(edit, x=edit['Order Date'], y =(edit['Net Amount (USD)']), hover_data=[edit['User Name'],edit['Transaction Description']], title="Net contributions per day (USD) over time")
+    fig = px.line(edit, x=edit['Order Date'], y =(edit['Net Amount (USD)']), hover_data=[edit['User Name'],edit['Transaction Description']], title="Net contributions per day (USD) over time",)
     fig.update_layout(hovermode="x unified")
     fig.show()
 
