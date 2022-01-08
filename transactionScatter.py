@@ -23,8 +23,8 @@ def contributionMain():
     createGraph()
 
 def createGraph():
-    fig = px.scatter(editpos, x=editpos['Order Date'], y =(editpos['Net Amount (USD)']), hover_data=[editpos['User Name'],editpos['Transaction Description']], title="Net contributions per day (USD) over time",)
-    fig1 = px.scatter(editneg, x=editneg['Order Date'], y =(editneg['Net Amount (USD)']), hover_data=[editneg['User Name'],editneg['Transaction Description']], title="Net contributions per day (USD) over time",)
+    fig = px.scatter(editpos, x=editpos['Order Date'], y =(editpos['Net Amount (USD)']), hover_data=[editpos['User Name'],editpos['Transaction Description']], title="Net contributions per day (USD) over time", color=editpos['Net Amount (USD)'],range_color=[0, 1000])
+    fig1 = px.scatter(editneg, x=editneg['Order Date'], y =(editneg['Net Amount (USD)']), hover_data=[editneg['User Name'],editneg['Transaction Description']], title="Net contributions per day (USD) over time", color=editneg['Net Amount (USD)'],range_color=[-10000, 0])
     fig.update_layout(hovermode="x unified")
     fig1.show()
     fig.show()
