@@ -24,7 +24,7 @@ for i in range(0, len(editneg["Order Date"])):
         pass
 
 
-def contributionMain():
+def transactionScatterMain():
     createGraph()
 
 
@@ -56,7 +56,7 @@ def createGraph():
 
 
 def main():
-    contributionMain()
+    transactionScatterMain()
 
 
 if __name__ == "__main__":
