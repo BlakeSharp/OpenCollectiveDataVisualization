@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import Label, messagebox, Button
-#from balanceTracker import balanceMain
+
+# from balanceTracker import balanceMain
 import pandas as pd
 import os
 from balanceTracker import *
@@ -8,29 +9,43 @@ from peopleOfInterest import *
 from ContributionPerDay import *
 from expensePerDay import *
 from transactionScatter import *
-#from TopDonators import donatorMain
-#from TopPaid import paidMain
-#this is the url for webpack which we should change with the thing the user wants
-#https://opencollective.com/webpack/transactions?kind=CONTRIBUTION%2CEXPENSE
+
+# from TopDonators import donatorMain
+# from TopPaid import paidMain
+# this is the url for webpack which we should change with the thing the user wants
+# https://opencollective.com/webpack/transactions?kind=CONTRIBUTION,EXPENSE
 def Everything():
     balanceMain()
     contributionMain()
     expensesMain()
     transactionScatterMain()
 
+
 def toolButtons():
     checkFileButton.destroy()
 
-    #button initialization
-    balanceGraphButton = Button(text='Balance Over Time', command=balanceMain, relief='raised')
-    topPaidButton = Button(text='Most expense', command=poiMain, relief='raised')
-    topDonatorButton = Button(text='Top Donators', command=poiMain, relief='raised')
-    contributionsButton = Button(text='Contributions Over Time', command=contributionMain, relief='raised')
-    expensesButton = Button(text='Contributions Over Time', command=expensesMain, relief='raised')
-    transcationScatter = Button(text='All Transaction Scatter Plot', command=transactionScatterMain, relief='raised')
-    allGraphs = Button(text="Open All Available Graphs", command= Everything , relief='raised')
-    
-    #packing
+    # button initialization
+    balanceGraphButton = Button(
+        text="Balance Over Time", command=balanceMain, relief="raised"
+    )
+    topPaidButton = Button(text="Most expense", command=poiMain, relief="raised")
+    topDonatorButton = Button(text="Top Donators", command=poiMain, relief="raised")
+    contributionsButton = Button(
+        text="Contributions Over Time", command=contributionMain, relief="raised"
+    )
+    expensesButton = Button(
+        text="Contributions Over Time", command=expensesMain, relief="raised"
+    )
+    transcationScatter = Button(
+        text="All Transaction Scatter Plot",
+        command=transactionScatterMain,
+        relief="raised",
+    )
+    allGraphs = Button(
+        text="Open All Available Graphs", command=Everything, relief="raised"
+    )
+
+    # packing
     allGraphs.pack()
     transcationScatter.pack()
     expensesButton.pack()
@@ -38,34 +53,39 @@ def toolButtons():
     balanceGraphButton.pack()
     topDonatorButton.pack()
     contributionsButton.pack()
-    root.iconphoto(False, tk.PhotoImage(file='images/icon.png'))
+    root.iconphoto(False, tk.PhotoImage(file="images/icon.png"))
 
 
 def errorLabel():
-    messagebox.showerror('Error',"Couldn't locate Data.csv File. Check spelling and refer to Readme.")
+    messagebox.showerror(
+        "Error", "Couldn't locate Data.csv File. Check spelling and refer to Readme."
+    )
+
+
 def goodLabel():
-    messagebox.showerror('Success',"Data.csv File located!")
+    messagebox.showerror("Success", "Data.csv File located!")
+
 
 def fileCheck():
-    checkfiles = os.listdir('Community')
-    if 'Data.csv' in checkfiles:
+    checkfiles = os.listdir("Community")
+    if "Data.csv" in checkfiles:
         goodLabel()
         toolButtons()
-    else: 
+    else:
         errorLabel()
 
-root= tk.Tk()
-root.resizable(False,False)
-root.title('Open Collective Visualization')
-root.iconphoto(False, tk.PhotoImage(file='images/icon.png'))
-root.geometry('300x200')
+
+root = tk.Tk()
+root.resizable(False, False)
+root.title("Open Collective Visualization")
+root.iconphoto(False, tk.PhotoImage(file="images/icon.png"))
+root.geometry("300x200")
 
 
-
-checkFileButton = Button(root, text='Check for File', command=fileCheck, relief='raised')
+checkFileButton = Button(
+    root, text="Check for File", command=fileCheck, relief="raised"
+)
 checkFileButton.pack()
-
-
 
 
 root.mainloop()
