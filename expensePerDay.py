@@ -14,7 +14,6 @@ for i in range(0,len(data['Order Date'])):
     except:
         break
 
-print(edit['Order Date'])
 def expensesMain():
     data.to_csv("Community/Data.csv", index=False)
     createGraph()

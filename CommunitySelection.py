@@ -7,25 +7,38 @@ from balanceTracker import *
 from peopleOfInterest import *
 from ContributionPerDay import *
 from expensePerDay import *
+from transactionScatter import *
 #from TopDonators import donatorMain
 #from TopPaid import paidMain
 #this is the url for webpack which we should change with the thing the user wants
 #https://opencollective.com/webpack/transactions?kind=CONTRIBUTION%2CEXPENSE
+def Everything():
+    balanceMain()
+    contributionMain()
+    expensesMain()
+    transactionScatterMain()
 
 def toolButtons():
     checkFileButton.destroy()
+
+    #button initialization
     balanceGraphButton = Button(text='Balance Over Time', command=balanceMain, relief='raised')
-    balanceGraphButton.pack()
     topPaidButton = Button(text='Most expense', command=poiMain, relief='raised')
-    topPaidButton.pack()
     topDonatorButton = Button(text='Top Donators', command=poiMain, relief='raised')
-    topDonatorButton.pack()
     contributionsButton = Button(text='Contributions Over Time', command=contributionMain, relief='raised')
-    contributionsButton.pack()
     expensesButton = Button(text='Contributions Over Time', command=expensesMain, relief='raised')
+    transcationScatter = Button(text='All Transaction Scatter Plot', command=transactionScatterMain, relief='raised')
+    allGraphs = Button(text="Open All Available Graphs", command= Everything , relief='raised')
+    
+    #packing
+    allGraphs.pack()
+    transcationScatter.pack()
     expensesButton.pack()
+    topPaidButton.pack()
+    balanceGraphButton.pack()
+    topDonatorButton.pack()
+    contributionsButton.pack()
     root.iconphoto(False, tk.PhotoImage(file='images/icon.png'))
-    root.title('({}) graph selection'.format(data['accountSlug'][0]))
 
 
 def errorLabel():
