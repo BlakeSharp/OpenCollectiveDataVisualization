@@ -7,4 +7,7 @@ This is a data visualization tool designed for the Open Collective site that str
   - `pip install plotly`
 - Download CSV 'V1' file from your desired community's Open collective transactions page
 - Rename the file Data.csv and move it into the Community folder of the app
-- Run OpenCollectiveVisualization.py and click on `Check File`
+- Run OpenCollectiveVisualization.py from terminal while in the files directory
+  - `python CommunitySelection.py`
+- click on `Check File`
+- open desired graphs
