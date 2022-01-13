@@ -4,7 +4,7 @@ import pandas as pd
 data = pd.read_csv('Community/Data.csv')
 
 
-def poimain():
+def poiMain():
     print(main)
 
 
