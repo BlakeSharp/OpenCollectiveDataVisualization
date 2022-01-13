@@ -1,7 +1,5 @@
 import tkinter as tk
 from tkinter import Label, messagebox, Button
-
-# from balanceTracker import balanceMain
 import pandas as pd
 import os
 from balanceTracker import *
