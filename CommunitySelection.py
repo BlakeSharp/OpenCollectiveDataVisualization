@@ -26,18 +26,19 @@ def toolButtons():
     balanceGraphButton = Button(
         text="Balance Over Time", command=balanceMain, relief="raised"
     )
-    topPaidButton = Button(text="Most expense", command=poiMain, relief="raised")
-    topDonatorButton = Button(text="Top Donators", command=poiMain, relief="raised")
+    topPaidButton = Button(text="Most expense", command=poiMain, relief="raised",bg='#EDF2F4')
+    topDonatorButton = Button(text="Top Donators", command=poiMain, relief="raised",bg='#EDF2F4')
     contributionsButton = Button(
-        text="Contributions Over Time", command=contributionMain, relief="raised"
+        text="Contributions Over Time", command=contributionMain, relief="raised",bg='#EDF2F4'
     )
     expensesButton = Button(
-        text="Contributions Over Time", command=expensesMain, relief="raised"
+        text="Contributions Over Time", command=expensesMain, relief="raised",bg='#EDF2F4'
     )
     transcationScatter = Button(
         text="All Transaction Scatter Plot",
         command=transactionScatterMain,
         relief="raised",
+        bg='#EDF2F4'
     )
     allGraphs = Button(
         text="Open All Available Graphs", command=Everything, relief="raised"
@@ -78,7 +79,7 @@ root.resizable(False, False)
 root.title("Open Collective Visualization")
 root.iconphoto(False, tk.PhotoImage(file="images/icon.png"))
 root.geometry("300x200")
-
+root.configure(bg='#8D99AE')
 
 checkFileButton = Button(
     root, text="Check for File", command=fileCheck, relief="raised"
