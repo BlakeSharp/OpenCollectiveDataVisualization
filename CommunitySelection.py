@@ -2,11 +2,11 @@ import tkinter as tk
 from tkinter import Label, messagebox, Button
 import pandas as pd
 import os
-from balanceTracker import *
-from peopleOfInterest import *
-from ContributionPerDay import *
-from expensePerDay import *
-from transactionScatter import *
+from tools.balanceTracker import *
+from tools.peopleOfInterest import *
+from tools.ContributionPerDay import *
+from tools.expensePerDay import *
+from tools.transactionScatter import *
 
 # from TopDonators import donatorMain
 # from TopPaid import paidMain
