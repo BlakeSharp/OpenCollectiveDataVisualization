@@ -45,9 +45,7 @@ def toolButtons():
     allGraphs.pack()
     transcationScatter.pack()
     expensesButton.pack()
-    topPaidButton.pack()
     balanceGraphButton.pack()
-    topDonatorButton.pack()
     contributionsButton.pack()
     root.iconphoto(False, tk.PhotoImage(file="images/icon.png"))
 
