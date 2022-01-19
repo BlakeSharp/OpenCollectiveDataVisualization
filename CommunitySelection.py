@@ -3,7 +3,6 @@ from tkinter import Label, messagebox, Button
 import pandas as pd
 import os
 from tools.balanceTracker import *
-from tools.peopleOfInterest import *
 from tools.ContributionPerDay import *
 from tools.expensePerDay import *
 from tools.transactionScatter import *
@@ -26,8 +25,6 @@ def toolButtons():
     balanceGraphButton = Button(
         text="Balance Over Time", command=balanceMain, relief="raised"
     )
-    topPaidButton = Button(text="Most expense", command=poiMain, relief="raised",bg='#EDF2F4')
-    topDonatorButton = Button(text="Top Donators", command=poiMain, relief="raised",bg='#EDF2F4')
     contributionsButton = Button(
         text="Contributions Over Time", command=contributionMain, relief="raised",bg='#EDF2F4'
     )
