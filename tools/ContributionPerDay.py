@@ -27,6 +27,7 @@ def createGraph():
         y=(edit["Net Amount (USD)"]),
         hover_data=[edit["User Name"], edit["Transaction Description"]],
         title="Net contributions per day (USD) over time",
+        template="seaborn"
     )
     fig.update_layout(hovermode="x unified")
     fig.show()

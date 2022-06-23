@@ -29,6 +29,7 @@ def createGraph():
         y=edit["Net Amount (USD)"],
         hover_data=[edit["User Name"]],
         title="Net expenses per day (USD) over time",
+        template="seaborn"
     )
     fig.show()
 

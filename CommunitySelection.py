@@ -23,13 +23,13 @@ def toolButtons():
 
     # button initialization
     balanceGraphButton = Button(
-        text="Balance Over Time", command=balanceMain, relief="raised"
+        text="Balance", command=balanceMain, relief="raised"
     )
     contributionsButton = Button(
-        text="Contributions Over Time", command=contributionMain, relief="raised",bg='#EDF2F4'
+        text="Contributions", command=contributionMain, relief="raised",bg='#EDF2F4'
     )
     expensesButton = Button(
-        text="Contributions Over Time", command=expensesMain, relief="raised",bg='#EDF2F4'
+        text="Expenses", command=expensesMain, relief="raised",bg='#EDF2F4'
     )
     transcationScatter = Button(
         text="All Transaction Scatter Plot",

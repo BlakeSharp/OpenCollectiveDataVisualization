@@ -37,6 +37,7 @@ def createGraph():
         title="Net contributions per day (USD) over time",
         color=editpos["Net Amount (USD)"],
         range_color=[0, 1000],
+        template="seaborn"
     )
     fig1 = px.scatter(
         editneg,
@@ -46,6 +47,7 @@ def createGraph():
         title="Net contributions per day (USD) over time",
         color=abs(editneg["Net Amount (USD)"]),
         range_color=[0, 5000],
+        template="seaborn"
     )
     fig.update_layout(hovermode="x unified")
     fig1.show()
