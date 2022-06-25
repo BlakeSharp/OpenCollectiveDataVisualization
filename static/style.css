@@ -1,6 +1,11 @@
+body{
+    background:whitesmoke;
 
+}
 
-
+div{
+    display: block;
+}
 
 .floating{
     z-index:10;
@@ -14,4 +19,11 @@
 }
 .floating:hover{
     padding:3rem;
+}
+
+#graph1{
+    background:white;
+    border-width: .5rem;
+    border-radius: 1rem;    
+    padding:2rem;
 }
