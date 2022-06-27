@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 
-data = pd.read_csv('Community/Data.csv')
+data = pd.read_csv('static/tools/Data.csv')
 
 
 def balanceMain():
@@ -27,7 +27,7 @@ def balanceMain():
 
     # save csv
 
-    data.to_csv('Community/Data.csv', index=False)
+    data.to_csv('static/tools/Data.csv', index=False)
 
     return(
         go.Figure([go.Scatter(x=data['Transaction Date'],

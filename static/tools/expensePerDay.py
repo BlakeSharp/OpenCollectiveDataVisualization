@@ -2,7 +2,7 @@ import plotly.express as px
 import pandas as pd
 import datetime
 
-data = pd.read_csv("Community/Data.csv")
+data = pd.read_csv("static/tools/Data.csv")
 data["UserName"] = ""
 
 data["Net Amount (USD)"] = round(data["Net Amount (USD)"].astype(float), 2)
@@ -18,7 +18,7 @@ for i in range(0, len(data["Order Date"])):
 
 
 def expensesMain():
-    data.to_csv("Community/Data.csv", index=False)
+    data.to_csv("static/tools/Data.csv", index=False)
     createGraph()
 
 

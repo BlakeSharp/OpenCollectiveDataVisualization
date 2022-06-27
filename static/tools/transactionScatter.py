@@ -2,7 +2,7 @@ import plotly.express as px
 import pandas as pd
 import datetime
 
-data = pd.read_csv("Community/Data.csv")
+data = pd.read_csv("static/tools/Data.csv")
 data["Net Amount (USD)"] = round(data["Net Amount (USD)"].astype(float), 2)
 editpos = data.loc[data["Net Amount (USD)"] > 0]
 editneg = data.loc[data["Net Amount (USD)"] < 0]

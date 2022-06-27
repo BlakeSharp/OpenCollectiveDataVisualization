@@ -5,13 +5,29 @@
 
 {% endblock %}
 {% block body %}
-<div class="floating">
-    hello world
-</div>
-<div id="chart1">
+<header class = "header" >Open Collective Data Visualization</header>
+<div class = "information">
+    <div> About</div>
+    <br>
+    <input id="communityName"></input >
+    <button id="communityButton"></button>
 
 </div>
+<div class="graphs">
+    <div id="chart1"></div>
+    <div id="chart2"></div>
+    <div id="chart3"></div>
+</div>
+
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript">
+    var graph1 = {{ graph1JSON | safe}}
+    Plotly.plot("chart1", graph1, {})
+
+    var graph2 = {{ graph2JSON | safe}}
+    Plotly.plot("chart2", graph2, {})
+
+    var graph3 = {{ graph3JSON | safe}}
+    Plotly.plot("chart3", graph3, {})
 </script>
 {% endblock %}
