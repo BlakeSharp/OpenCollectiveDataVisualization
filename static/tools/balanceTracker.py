@@ -4,8 +4,11 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 
-data = pd.read_csv('static/tools/Data.csv')
 
+#.iloc[::-1] reverses the rows in the data frame making it oldest -> newest, allowing for cumulative sum to be used to 
+# accuratly track the the running balance of all transactions
+data = pd.read_csv('Data.csv'
+            ).iloc[::-1]
 
 def balanceMain():
 
@@ -14,25 +17,17 @@ def balanceMain():
     data['Net Amount (USD)'] = round(data['Net Amount (USD)'
             ].astype(float), 2)
 
-    # Creates a column for running balance and sets each value to the last so that it can be traversed backwards (most likely a better way to do this)
 
-    data['Running Balance'] = data['Net Amount (USD)'
-                                   ][len(data['Net Amount (USD)']) - 1]
 
-    # traverse a list of numbers from the len -> 0 adding each value x from the on before it (which is the other after it in the list so x+1)
+    #This creates 'Running Balance' as the last column in the dataframe and set each cell equal to the cumuliative sum
+    #of the value of 'Net Amount (USD)' (this works because the rows are reversed by the initial .iloc when reading data.csv)
+    data['Running Balance'] = data['Net Amount (USD)'].cumsum()
 
-    for x in reversed(range(0, len(data['Net Amount (USD)']) - 2)):
-        data['Running Balance'][x] = round(data['Net Amount (USD)'][x]
-                + data['Running Balance'][x + 1], 2)
-
-    # save csv
-
-    data.to_csv('static/tools/Data.csv', index=False)
-
-    return(
-        go.Figure([go.Scatter(x=data['Transaction Date'],
-                    y=data['Running Balance'])])
-                    )
+    
+    #.iloc[::-1] revereses the order of the rows of the dataframe again, reverting back to the newest -> oldest order
+    
+    #save csv
+    data.iloc[::-1].to_csv('Data.csv', index=False)
 
 
 def main():
