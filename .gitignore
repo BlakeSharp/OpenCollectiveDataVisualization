@@ -3,4 +3,5 @@ FutureFeatures.txt
 Community/toolData/poiData.csv
 TempFolder
 venv
+.DS_Store
 static/tools/__pycache__
