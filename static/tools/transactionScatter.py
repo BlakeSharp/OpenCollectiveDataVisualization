@@ -1,7 +1,6 @@
 import pandas as pd
 
-def transactionMain(call):
-    data = pd.read_csv('Data.csv')
+def transactionMain(data, call):
 
     #looking for the positive only
     if(call == 1):
@@ -11,7 +10,4 @@ def transactionMain(call):
         data = data.loc[data['Net Amount (USD)'] < 0]
     #looking for both the positive and negative
 
-    return (data['Net Amount (USD)'])
-
-
-print(transactionMain(0))
+    return (data)
