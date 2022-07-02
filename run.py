@@ -1,5 +1,5 @@
 import json
-import plotly
+import plotly 
 import plotly.express as px
 import plotly.graph_objects as go
 from flask import Flask, redirect, render_template, session, url_for, request
@@ -19,7 +19,7 @@ def index():
     graph2 = px.scatter(transactionMain(df, 0), x= "Order Date", y= 'Net Amount (USD)', title = "All Transactions")
     graph2JSON = json.dumps(graph2, cls=plotly.utils.PlotlyJSONEncoder)
 
-    graph3 = px.scatter(transactionMain(df, 1), x = 'Order Date',y= 'Net Amount (USD)', title = "All Contributions")
+    graph3 = px.scatter(transactionMain(df, 1), x = 'Order Date',y= 'Net Amount (USD)', title = "All Contributions",)
     graph3JSON = json.dumps(graph3, cls=plotly.utils.PlotlyJSONEncoder)     
 
 

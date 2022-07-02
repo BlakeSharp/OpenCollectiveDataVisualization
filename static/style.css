@@ -22,12 +22,39 @@ header{
     z-index: 10;
 }
 
+#buttons{
+    flex-direction: row;
+    margin:1vh;
+}
+.headbtn{
+    background-color: transparent;
+    border-style: none;
+    border-radius: 2rem;
+    font-size: xx-large;
+    padding:1vh;
+    padding-inline: 1vw;
+}
+.headbtn:hover{
+    box-shadow: 0px 0px 5px black;
+    transition: all .1s ease-in-out;
+}
+
 .information{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 3vh;
+    margin-inline: 2.5vw;
 }
 
 .graphs{
+    background-color: #f4f7fa;
     flex-direction: column;
+}
+.chart{
+    margin:2vw;
+    border:2px solid black;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px #00000050;
 }
