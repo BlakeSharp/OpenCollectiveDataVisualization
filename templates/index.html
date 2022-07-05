@@ -12,24 +12,37 @@
         <button class="headbtn" id="inst">Instructions</button>
         <button class="headbtn" id="tips">Tips</button>
     </div>
-        <div style="text-align: center;">
+        <div style="text-align: center; height:7vh;" id="infotext">
+            <span>
             Open Collective Data Visualization is a tool for community leaders and supporters. It supports Open Collective's vision
             of more transparent crowd-funded projects by making the data provided easier to understand. While Open Collective provides
             lists of names and amounts, it does little to nothing in terms of visually showing you how it all correlates.
             That blind spot is what this project fills by providing useful charts, names, and tracking for all parties involved
+            </span>
         </div>
 </div>
-<div style="justify-content: center;align-items: center;padding:5vh;">
+<div style="justify-content: center;padding:5vh;">
     <input id="communityName" placeholder="Open Collective Community Link" size="50"></input >
     <button id="communityButton">Get Data</button>
+</div>
+{% if name %}
+<div style="justify-content: center;">
+    {{name}}'s Data
 </div>
 <div class="graphs">
     <div class="chart" id="chart1"></div>
     <div class="chart" id="chart2"></div>
     <div class="chart" id="chart3"></div>
 </div>
+{% elif Error %}
+<div style="width:100%;margin-left:28%;color:red;font-weight: bold;"> There was an error with the open collective link provided, please try again</div>
+{% else %}
+<div></div>
+{% endif %}
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="{{url_for('static', filename='buttons.js')}}"></script>
+{% if not nolink%}
 <script type="text/javascript">
     var graph1 = {{ graph1JSON | safe}}
     Plotly.plot("chart1", graph1, {})
@@ -41,4 +54,5 @@
     Plotly.plot("chart3", graph3, {})
 
 </script>
+{% endif %}
 {% endblock %}
