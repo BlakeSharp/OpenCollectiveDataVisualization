@@ -21,10 +21,11 @@
             </span>
         </div>
 </div>
-<div style="justify-content: center;padding:5vh;">
-    <input id="communityName" placeholder="Open Collective Community Link" size="50"></input >
+<!--This creates a form that calls to the index method when submitted -->
+<form action="{{ url_for("index")}}" method="post" style="justify-content: center;padding:5vh;">
+    <input id="communityName" placeholder="Open Collective Community Link" size="50" name="comname"></input >
     <button id="communityButton">Get Data</button>
-</div>
+</form>
 {% if name %}
 <div style="justify-content: center;">
     {{name}}'s Data
