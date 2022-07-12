@@ -1,7 +1,9 @@
 import json
+from math import exp
 import plotly 
 import plotly.express as px
 from flask import request, render_template, Flask
+from static.tools.biggestExpenses import expensesMain
 from static.tools.transactionScatter import transactionMain
 import pandas as pd
 from selenium import webdriver
@@ -63,10 +65,17 @@ def index():
 
         #add a graph a bar graph to visaulize the amount of frequency of donation amounts
 
+        largestExpenses = expensesMain(df)
+
 
         #Return the page from the index.html render tamplates with the graphs we just created as parameters
         return render_template('index.html', name=name,graph1JSON = graph1JSON,
-        graph2JSON = graph2JSON, graph3JSON = graph3JSON)
+        graph2JSON = graph2JSON, graph3JSON = graph3JSON, expense1amt = largestExpenses.iloc[0]['Net Amount (USD)'],
+        expense2amt = largestExpenses.iloc[1]['Net Amount (USD)'],expense3amt = largestExpenses.iloc[2]['Net Amount (USD)'],
+        expense4amt = largestExpenses.iloc[3]['Net Amount (USD)'],expense5amt = largestExpenses.iloc[4]['Net Amount (USD)'],expense1person = largestExpenses.iloc[0]['User Name'],
+        expense2person = largestExpenses.iloc[1]['User Name'],expense3person = largestExpenses.iloc[2]['User Name'],
+        expense4person = largestExpenses.iloc[3]['User Name'],expense5person = largestExpenses.iloc[4]['User Name'],
+        )
     
     #indow.html without parameters will be shown if the request is not a POST
     return render_template('index.html')

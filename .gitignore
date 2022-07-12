@@ -5,3 +5,5 @@ TempFolder
 venv
 .DS_Store
 static/tools/__pycache__
+element.png
+geckodriver.log

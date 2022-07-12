@@ -29,7 +29,14 @@
 {% if name %}
 <div style="width:100vw;flex-direction: column;text-align: center;font-size: xx-large;">
     {{name}}'s Data
-    <img src = {{url_for('static', filename='element.png')}} style="width: 90vw;margin-left: auto;margin-right:auto;border-radius: 5vw;margin-top: 5vh;">
+    <img src = {{url_for('static', filename='element.png')}} style="width: 90vw;margin-left: auto;margin-right:auto;border-radius: 1rem;margin-top: 5vh;border:2px solid black;">
+    <ul style="list-style: none">
+        <li>{{expense1person}} {{expense1amt}}</li>
+        <li>{{expense2person}} {{expense2amt}}</li>
+        <li>{{expense3person}} {{expense3amt}}</li>
+        <li>{{expense4person}} {{expense4amt}}</li>
+        <li>{{expense5person}} {{expense5amt}}</li>
+    </ul>
 </div>
 <div class="graphs">
     <div class="chart" id="chart1"></div>
