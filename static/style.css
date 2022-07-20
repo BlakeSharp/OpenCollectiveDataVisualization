@@ -11,12 +11,30 @@ div{
 ul{
     margin-top: 0px;
 }
+td, tr {
+    font-size: large;
+}
+table{
+    width: 30vw;
+    background:white;
+    border:2px solid black;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px #00000050;
+    padding:2.5vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+td{
+    border-bottom: 2px solid rgba(98,109,251,255);
+}
 
 header{
     font-size: xx-large;
-    text-align: center;
     position: sticky;
-    width: 101vw;
+    width:101vw;
+    padding-inline: 5vw;
+    padding-top:1vh;
     height:6vh;
     margin-left: -1vw;
     top:0vh;
@@ -37,6 +55,7 @@ header{
     font-size: xx-large;
     padding:1vh;
     padding-inline: 1vw;
+    transition: all .15s ease-in-out;
 }
 .headbtn:hover{
     background-color: white;

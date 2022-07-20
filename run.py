@@ -9,6 +9,7 @@ import pandas as pd
 from selenium import webdriver
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.common.by import By
 import time
 app = Flask(__name__)
 
@@ -26,36 +27,50 @@ def index():
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options = options)
         driver.get(url)
         topcontributions = driver.find_element("id","section-top-financial-contributors") #Navigate to top contributers div
+        team = driver.find_element("xpath", '//*[@id="section-our-team"]/div/div/div[1]')
         time.sleep(2) #this gives time for firefox to lead the contributers images
 
         #This prevents "can't read byte data error"
+        ss_teams = team.screenshot_as_png
         screenshot_as_bytes = topcontributions.screenshot_as_png
-        with open('static/element.png', 'wb') as f:
-            f.write(screenshot_as_bytes)
 
+        with open('static/topcontributions.png', 'wb') as f:
+            f.write(screenshot_as_bytes)
+        with open('static/team.png', 'wb') as f:
+            f.write(ss_teams)
         #Selenium end
 
         url = request.form.get("comname") # comname = COMmunityNAME, input in form
-        url = url[:(27 + len(url.split('/')[3]))]
-        name = url.split('/')[3].capitalize() #takes text after the final / to display the name of the community
+        try:
+            url = url[:(27 + len(url.split('/')[3]))]
+            name = url.split('/')[3].capitalize() #takes text after the final / to display the name of the community
+
+        except:
+            name = "url"
 
         df = pd.read_csv('static/tools/Data.csv') #(temp) loads the data from file
 
+        #This makes a df of all values in data > 0
+        posdon = transactionMain(df, 1)
+
+        #This makes a df of all values in data < 0 
+        negdon = transactionMain(df, 2)
 
         # From file --> From link download file when open collective fixes bug
 
         #build the graphs that we want on the page         
             #The amount of money the community has had available at given times line chart
-        graph1 = px.line(df, x= "Order Date", y="Running Balance", title = "Running Balance")
+        graph1 = px.line(df, x= "Order Date", y="Running Balance", title = "Running Balance", custom_data = ['User Name', 'Net Amount (USD)','Transaction Description'])
 
             #all Transaction (Noth expenses and donations) scatter plot
         graph2 = px.scatter(transactionMain(df, 0), x= "Order Date", y= 'Net Amount (USD)', title = "All Transactions")
 
             #All donations scatter plot
-        graph3 = px.scatter(transactionMain(df, 1), x = 'Order Date',y= 'Net Amount (USD)', title = "All Contributions"
+        graph3 = px.scatter(posdon, x = 'Order Date',y= 'Net Amount (USD)', title = "All Contributions"
         , custom_data = ['User Name','Subscription Interval'])
             #update the hover to show the name, amount, and order date 
-        graph3.update_traces(hovertemplate = "User Name : %{customdata[0]} <br> Amount: %{y} <br> Interval: %{customdata[1]} <br> Date = %{x}")
+        graph3.update_traces(hovertemplate = "User Name : %{customdata[0]} <br> Amount: %{y} USD <br> Interval: %{customdata[1]} <br> Date = %{x}")
+        graph1.update_traces(hovertemplate = "User Name : %{customdata[0]} <br> Running Balance: %{y} <br> Amount: %{customdata[1]} USD <br> Description %{customdata[2]} <br> Date = %{x}")
         
         
         #Convert all graphs to json objects
@@ -68,13 +83,24 @@ def index():
         largestExpenses = expensesMain(df)
 
 
+        # # contributions
+        amtContributions = len(posdon.index)
+        # # of expsese
+        amtExpenses = len(negdon.index)
+        # total raised
+        totalRaised = int(posdon['Net Amount (USD)'].sum())
+        # total spent
+        totalSpent = abs(int(negdon['Net Amount (USD)'].sum()))
+        # average contribution
+        avgcon = int(totalRaised/amtContributions)
+        avgexp = abs(int(totalSpent/amtExpenses))
+        # founded
+
+
         #Return the page from the index.html render tamplates with the graphs we just created as parameters
         return render_template('index.html', name=name,graph1JSON = graph1JSON,
-        graph2JSON = graph2JSON, graph3JSON = graph3JSON, expense1amt = largestExpenses.iloc[0]['Net Amount (USD)'],
-        expense2amt = largestExpenses.iloc[1]['Net Amount (USD)'],expense3amt = largestExpenses.iloc[2]['Net Amount (USD)'],
-        expense4amt = largestExpenses.iloc[3]['Net Amount (USD)'],expense5amt = largestExpenses.iloc[4]['Net Amount (USD)'],expense1person = largestExpenses.iloc[0]['User Name'],
-        expense2person = largestExpenses.iloc[1]['User Name'],expense3person = largestExpenses.iloc[2]['User Name'],
-        expense4person = largestExpenses.iloc[3]['User Name'],expense5person = largestExpenses.iloc[4]['User Name'],
+        graph2JSON = graph2JSON, graph3JSON = graph3JSON, expenses = largestExpenses.round(2), enames = largestExpenses.index.values,
+        acon = amtContributions, aexp = amtExpenses, traised = totalRaised, tspent = totalSpent, avgcon = avgcon, avgexp = avgexp
         )
     
     #indow.html without parameters will be shown if the request is not a POST
