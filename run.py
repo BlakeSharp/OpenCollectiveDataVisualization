@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['POST', 'GET'])
 def index():
-    url = "https://opencollective.com/darkreader"
+    url = "https://opencollective.com/obsproject"
     if request.method == "POST":  #if the request is a post (called by the form action)
         #Selenium start
             #settings and setup

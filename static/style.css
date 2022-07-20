@@ -1,7 +1,7 @@
 body{
     background:#f4f7fa;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+    width: 99vw;
 }
 
 div{
@@ -24,15 +24,17 @@ table{
     padding:2.5vh;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 2.5vh;
+    margin-bottom: 1.5;
 }
 td{
-    border-bottom: 2px solid rgba(98,109,251,255);
+    border-bottom: 2px solid #e5ecf6;
 }
 
 header{
     font-size: xx-large;
     position: sticky;
-    width:101vw;
+    width: 100%;
     padding-inline: 5vw;
     padding-top:1vh;
     height:6vh;

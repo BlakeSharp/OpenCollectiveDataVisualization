@@ -3,7 +3,7 @@
 {% block head %}
 {% endblock %}
 {% block body %}
-<header class = "header" >Open Collective Data Visualization</header>
+<header class = "header">Open Collective Data Visualization</header>
 <div class = "information">
     <div id="buttons">
         <button class="headbtn" id="about">About</button>
@@ -28,69 +28,105 @@
 </div>
 {% if name %}
 <div style="width:100vw;flex-direction: column;text-align: center;font-size: xx-large;">
-    {{name}}'s
-    <div style="width: 90vw;margin-left: auto;margin-right:auto;border-radius: 1rem;margin-top: 5vh;border:2px solid black;background-color: white;flex-direction: column;">
-    <span style="text-align: left;margin-left: 6vw;">Team</span>
-    <img src = {{url_for('static', filename='team.png')}} style="border-radius:2rem;" >
+    {{name}}'s Information
+    <div style="width: 95vw;margin-left: auto;margin-right:auto;border-radius: 1rem;margin-top: 5vh;border:2px solid black;background-color: white;flex-direction: column;">
+    <span style="text-align: left;margin-left: 10vw;">Team</span>
+    <img src = {{url_for('static', filename='team.png')}} style="border-radius:2rem;height: 37.5vh; width:67vh;margin-left:auto;margin-right:auto;margin-bottom: 2vh;">
     </div>
-    <img src = {{url_for('static', filename='topcontributions.png')}} style="width: 90vw;margin-left: auto;margin-right:auto;border-radius: 1rem;margin-top: 5vh;border:2px solid black;">
-    <div class="chart" style="justify-content: center;font-size: smaller;background:white;margin-inline:5vw;flex-direction: column;">
-        <span style="width: 100%;text-align: left;font-size: larger;margin-left: 6vw;">Top Expenses</span>
-        <div style="flex-direction: row;padding-top:1rem;justify-content: center;">
-            <ul style="list-style: none;text-align: left;">
-                <li>Names</li>
-                {% for item in enames %}
-                <li>{{item}}</li>
-                {% endfor %}
-            </ul>
-            <ul style="list-style: none">
-                <li>Amount</li>
-                {% for item in expenses %}
-                <li>{{item}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+    <img src = {{url_for('static', filename='topcontributions.png')}} style="width: 90vw;margin-left: auto;margin-right:auto;border-radius: 1rem;margin-top: 5vh;border:2px solid black;padding-left: 5vw;padding-right: -5vw;background:white;">
 </div>
-<div class="graphs">
-    <div class="chart" id="chart1"></div>
-    <div class="chart" id="chart2"></div>
-    <div class="chart" id="chart3"></div>
-</div>
-<div style="width:100vw;">
+
+<div style="flex-direction:row;justify-content: center;align-items: center;">
     <table>
         <tr>
-            <td>Some Statistics</td>
+            <td style="color:rgba(98,109,251,255);">Some Statistics</td>
         </tr>
         <tr>
             <td>Amount of Contributions</td>
             <td>{{acon}}</td>
         </tr>
         <tr>
-            <td>Amount of expenses</td>
-            <td>{{aexp}}</td>
+            <td>Amount of Expenses</td>
+            <td>{{aexp}} (USD)</td>
         </tr>
         <tr>
             <td>Total Raised</td>
-            <td>{{traised}}</td>
+            <td>{{traised}} (USD)</td>
         </tr>
         <tr>
             <td>Total Spent</td>
-            <td>{{tspent}}</td> 
+            <td>{{tspent}} (USD)</td> 
         </tr>
         <tr>
             <td>Average Contribution</td>
-            <td>{{avgcon}}</td>
+            <td>{{avgcon}} (USD)</td>
         </tr>
         <tr>
             <td>Average Expense</td>
-            <td>{{avgexp}}</td>
+            <td>{{avgexp}} (USD)</td>
         </tr>
         <tr>
             <td>Founded</td>
             <td>founded date</td>
         </tr>
     </table>
+    <table style="margin-top:3vh;">
+        <tr>
+            <td>
+                Top Expenses
+            </td>
+        </tr>
+        <tr style="color: rgba(98,109,251,255);">
+            <td>Name</td>
+            <td>Amount</td>
+        </tr>
+        <tr>
+            <td>{{enames[0]}}</td>
+            <td>{{expenses[0]}}</td>
+        </tr>
+        <tr>
+            <td>{{enames[1]}}</td>
+            <td>{{expenses[1]}}</td>
+        </tr>
+        <tr>
+            <td>{{enames[2]}}</td>
+            <td>{{expenses[2]}}</td>
+        </tr>
+        <tr>
+            <td>{{enames[3]}}</td>
+            <td>{{expenses[3]}}</td>
+        </tr>
+        <tr>
+            <td>{{enames[4]}}</td>
+            <td>{{expenses[4]}}</td>
+        </tr>
+        <tr>
+            <td>{{enames[5]}}</td>
+            <td>{{expenses[5]}}</td>
+        </tr>
+        <tr>
+            <td>{{enames[6]}}</td>
+            <td>{{expenses[6]}}</td>
+        </tr>
+        <tr>
+            <td>{{enames[7]}}</td>
+            <td>{{expenses[7]}}</td>
+        </tr>
+        <tr>
+            <td>{{enames[8]}}</td>
+            <td>{{expenses[8]}}</td>
+        </tr>
+        <tr>
+            <td>{{enames[9]}}</td>
+            <td>{{expenses[9]}}</td>
+        </tr>
+    </table>
+
+</div>
+<div class="graphs">
+    <div class="chart" id="chart1"></div>
+    <div class="chart" id="chart2"></div>
+    <div class="chart" id="chart3"></div>
 </div>
 {% elif Error %}
 <div style="width:100%;margin-left:28%;color:red;font-weight: bold;"> There was an error with the open collective link provided, please try again</div>
