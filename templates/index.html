@@ -23,7 +23,7 @@
 <div  style="justify-content:center;padding:5vh;">
     <form action="{{ url_for("index")}}" method="post">
         <input id="communityName" placeholder="Open Collective Community Link" size="50" name="comname"></input >
-        <button id="communityButton">Get Data</button>
+        <button id="communityButton">View</button>
     </form>
 </div>
 {% if name %}
@@ -73,7 +73,7 @@
     <table style="margin-top:3vh;">
         <tr>
             <td>
-                Top Expenses
+                All Time Top Expenses 
             </td>
         </tr>
         <tr style="color: rgba(98,109,251,255);">
@@ -151,6 +151,17 @@
     var graph3 = {{ graph3JSON | safe}}
     Plotly.plot("chart3", graph3, {})
 
+    $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
+    $(window).on('load', function(){
+    setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
+    });
+    function removeLoader(){
+        $( "#loadingDiv" ).fadeOut(500, function() {
+        // fadeOut complete. Remove the loading div
+        $( "#loadingDiv" ).remove(); //makes page more lightweight 
+    });  
+    }
 </script>
+
 {% endif %}
 {% endblock %}

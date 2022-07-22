@@ -1,5 +1,4 @@
 import json
-from math import exp
 import plotly 
 import plotly.express as px
 from flask import request, render_template, Flask
@@ -10,6 +9,7 @@ from selenium import webdriver
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.common.by import By
+
 import time
 app = Flask(__name__)
 
