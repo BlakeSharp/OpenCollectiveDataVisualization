@@ -9,7 +9,7 @@ By providing tables, graphs, and other important information OCDV allows all pot
 ## Instructions
 To use OCDV is quite easy, simply:
 1) **Navigate to the Open collective page of your choosing**
-2) **Copy the desired community's home page URL** `https://opencollective.com/darkreader`
+2) **Copy the desired community's home page URL** `https://opencollective.com/community`
 3) **Paste into the `Community` field on OCDV**
 4) **Click the `View` button** 
 
