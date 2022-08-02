@@ -39,4 +39,10 @@ Open collective Data Visualization is broken into three main sections.
 ## HOW IT WAS BUILT
 OCDV is built using Flask as a backend web framework, utilizing pandas for data manipulation, plotly for displaying the graphs, and Selenium for the information images. While OCDV began as a Tkinter app, I transferred it to Flask for the ease of viewing the data. 
 
-## IMAGES
+## Video Demo
+
+
+
+https://user-images.githubusercontent.com/68100721/182277827-32aab913-92b3-4510-aad3-aa82180cf423.mp4
+
+
