@@ -6,8 +6,6 @@ from static.tools.biggestExpenses import expensesMain
 from static.tools.transactionScatter import transactionMain
 import pandas as pd
 from selenium import webdriver
-from webdriver_manager.firefox import GeckoDriverManager
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.common.by import By
 
 import time
@@ -18,35 +16,30 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['POST', 'GET'])
 def index():
-    url = "https://opencollective.com/obsproject"
     if request.method == "POST":  #if the request is a post (called by the form action)
-        #Selenium start
-            #settings and setup
-        options = FirefoxOptions()
-        options.headless = True
-        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options = options)
-        driver.get(url)
-        topcontributions = driver.find_element("id","section-top-financial-contributors") #Navigate to top contributers div
-        team = driver.find_element("xpath", '//*[@id="section-our-team"]/div/div/div[1]')
-        time.sleep(2) #this gives time for firefox to lead the contributers images
+        url = request.form.get("comname") # comname = COMmunityNAME, input in form
+        try:
+            url = url[:(27 + len(url.split('/')[3]))]
+            name = url.split('/')[3].capitalize()
+        except:
+            name = "url"
 
-        #This prevents "can't read byte data error"
-        ss_teams = team.screenshot_as_png
+        #Selenium start
+        driver = webdriver.Safari()
+        driver.get(url)
+        time.sleep(5) #wait for page to fully load before finding elements
+
+        topcontributions = driver.find_element("id","section-top-financial-contributors")
+        team = driver.find_element("xpath", '//*[@id="section-our-team"]/div/div/div[1]')
+
         screenshot_as_bytes = topcontributions.screenshot_as_png
+        ss_teams = team.screenshot_as_png
 
         with open('static/topcontributions.png', 'wb') as f:
             f.write(screenshot_as_bytes)
         with open('static/team.png', 'wb') as f:
             f.write(ss_teams)
         #Selenium end
-
-        url = request.form.get("comname") # comname = COMmunityNAME, input in form
-        try:
-            url = url[:(27 + len(url.split('/')[3]))]
-            name = url.split('/')[3].capitalize() #takes text after the final / to display the name of the community
-
-        except:
-            name = "url"
 
         df = pd.read_csv('static/tools/Data.csv') #(temp) loads the data from file
 

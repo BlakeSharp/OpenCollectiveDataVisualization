@@ -45,4 +45,8 @@ OCDV is built using Flask as a backend web framework, utilizing pandas for data 
 
 https://user-images.githubusercontent.com/68100721/182277827-32aab913-92b3-4510-aad3-aa82180cf423.mp4
 
+## Images
 
+![Screenshot 1](READMEimg/img1.png)
+
+![Screenshot 2](READMEimg/img2.png)
