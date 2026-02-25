@@ -12,7 +12,7 @@ Prerequisites:
 1) Install the latest version of `Python3` at [Python.org/downloads](https://www.python.org/downloads/)
 2) Use this pip commands to install the required libraries:
 
-`pip install selenium==0.9.2 plotly==8.0.1 flask==2.1.1 pandas==1.15.0`
+`pip install selenium==4.27.1 plotly==5.24.1 flask==3.1.0 pandas==2.2.3`
 
 3) Open terminal in the directory where you downloaded the repository and type 'Python3 run.py'
 4) Press 'Ctrl + c' to quit
@@ -20,7 +20,7 @@ Prerequisites:
 ### To Use
 1) **Navigate to the Open collective page of your choosing**
 2) **Copy the desired community's home page URL** `https://opencollective.com/community`
-3) **Paste into the `Community` field on OCDV**
+3) **Paste into the `Community` field on OCDV opened on Safari**
 4) **Click the `View` button** 
 
 ## INCLUDED INFORMATION
@@ -38,12 +38,6 @@ Open collective Data Visualization is broken into three main sections.
 
 ## HOW IT WAS BUILT
 OCDV is built using Flask as a backend web framework, utilizing pandas for data manipulation, plotly for displaying the graphs, and Selenium for the information images. While OCDV began as a Tkinter app, I transferred it to Flask for the ease of viewing the data. 
-
-## Video Demo
-
-
-
-https://user-images.githubusercontent.com/68100721/182277827-32aab913-92b3-4510-aad3-aa82180cf423.mp4
 
 ## Images
 
